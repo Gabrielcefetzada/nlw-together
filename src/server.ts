@@ -1,14 +1,11 @@
 import express from "express";
 import './database'
+import { router } from "./routes";
 
 const app = express();
 
-app.get("/test", (req:any, res:any) => {
-    return res.send("Olá nlw")
-})
+app.use(express.json()) // falando para o express que estou usando json para mandar dados
 
-app.post("/test-post", (req:any, res:any) => {
-    return res.send("Olá nlw, metodo post")
-})
+app.use(router) // inserindo rotas no projeto
 
 app.listen(3000, () => console.log("server is running"))
