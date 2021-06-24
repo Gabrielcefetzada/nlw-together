@@ -1,6 +1,8 @@
 import { getCustomRepository } from "typeorm"
 import { UsersRepositories } from '../repositories/UsersRepositories'
 
+// REGRAS DE NEGÓCIO 
+
 interface UserRequestInterface {
     name: string;
     email: string;

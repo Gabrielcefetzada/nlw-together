@@ -17,10 +17,10 @@ class User {
     admin: boolean;
 
     @CreateDateColumn()
-    created_at: Date;
+    create_at: Date;
 
     @UpdateDateColumn()
-    updated_at: Date;
+    update_at: Date;
 
     constructor() {
         if(!this.id){
