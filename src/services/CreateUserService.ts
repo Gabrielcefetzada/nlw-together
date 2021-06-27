@@ -12,7 +12,7 @@ interface UserRequestInterface {
 }
 
 class CreateUserService { 
-    async execute({name, email, admin, password} : UserRequestInterface){
+    async execute({name, email, admin = false, password} : UserRequestInterface){
         const usersRepository = getCustomRepository(UsersRepositories)
 
         if(!email) {
