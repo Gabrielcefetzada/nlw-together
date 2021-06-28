@@ -1,6 +1,7 @@
-import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
 
-export class CreateCompliments1624736073456 implements MigrationInterface {
+import {MigrationInterface, QueryRunner, Table} from "typeorm";
+
+export class CreateCompliments1624496382766 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
@@ -14,8 +15,7 @@ export class CreateCompliments1624736073456 implements MigrationInterface {
                     },
                     {
                         name: "user_sender",
-                        type: "uuid",
-                        
+                        type: "uuid"
                     },
                     {
                         name: "user_receiver",
@@ -24,38 +24,36 @@ export class CreateCompliments1624736073456 implements MigrationInterface {
                     {
                         name: "tag_id",
                         type: "uuid"
-                    },
+                    }, 
                     {
-                        name: "messgae",
+                        name: "message",
                         type: "varchar"
                     },
                     {
-                        name: "create_at",
+                        name: "created_at",
                         type: "timestamp",
                         default: "now()"
                     }
                 ],
                 foreignKeys: [
                     {
-                        name: "FK_UserSenderCopliments",
+                        name: "FKUserSenderCompliments",
                         referencedTableName: "users",
                         referencedColumnNames: ["id"],
                         columnNames: ["user_sender"],
                         onDelete: "SET NULL",
                         onUpdate: "SET NULL"
-                    },
-
+                    }, 
                     {
-                        name: "FK_UserReceiverCopliments",
+                        name: "FKUserReceiverCompliments",
                         referencedTableName: "users",
                         referencedColumnNames: ["id"],
                         columnNames: ["user_receiver"],
                         onDelete: "SET NULL",
                         onUpdate: "SET NULL"
                     },
-
                     {
-                        name: "FK_TagCopliments",
+                        name: "FKTagCompliments",
                         referencedTableName: "tags",
                         referencedColumnNames: ["id"],
                         columnNames: ["tag_id"],
@@ -65,21 +63,10 @@ export class CreateCompliments1624736073456 implements MigrationInterface {
                 ]
             })
         )
-
- /*       await queryRunner.createForeignKey("compliments", // 
-            new TableForeignKey({
-                name: "FK_UserSenderCopliments",
-                referencedTableName: "compliments",
-                referencedColumnNames: ["id"],
-                columnNames: ["user_sender"],
-                onDelete: "SET NULL",
-                onUpdate: "SET NULL"
-            })
-        ) */
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        queryRunner.dropTable("compliments")
+        await queryRunner.dropTable("compliments")
     }
 
 }

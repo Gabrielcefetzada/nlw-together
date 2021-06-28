@@ -12,6 +12,10 @@ class Compliment {
     @Column()
     user_sender: string;
 
+    @JoinColumn({name: "user_sender"})
+    @ManyToOne(() => User)
+    userSender: User
+
     @Column()
     user_receiver: string;
 
@@ -19,22 +23,18 @@ class Compliment {
     @ManyToOne(() => User)
     userReceiver: User
 
-    @JoinColumn({name: "user_sender"})
-    @ManyToOne(() => User)
-    userSender: User
+    @Column()
+    tag_id: string;
 
     @JoinColumn({name: "tag_id"})
     @ManyToOne(() => Tag)
     tag: Tag
 
     @Column()
-    tag_id: string;
-
-    @Column()
     message: string;
 
     @CreateDateColumn()
-    create_at: Date;
+    created_at: Date;
 
     constructor(){
         if(!this.id){
