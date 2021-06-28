@@ -8,4 +8,4 @@
 * Express
 * Insominia e Beekeeper para simular requisições e banco de dados
 
-<img src="/demo/demo.gif">
+<img src="demo/demo.gif">
