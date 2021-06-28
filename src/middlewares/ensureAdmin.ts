@@ -12,7 +12,10 @@ export async function ensureAdmin(request: Request, response: Response, next: Ne
         
     // Verificar se usuário é admin
 
-    if(user) { const { admin } = user; }
+    if(user) {
+        const { admin } = user; 
+        return next()
+        }
 
     return response.status(401).json({
         error: "Unauthorized",
